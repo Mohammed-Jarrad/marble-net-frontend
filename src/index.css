@@ -1,0 +1,113 @@
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;500;600;700;800;900;1000&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --nav-color: #eceeff;
+  --main-color: #2d6f6d;
+  --second-color: #308faf;
+  /* --second-color: #ff6452; */
+  --second-color-darker: #ef4444;
+  --body-color: #f5f5f5;
+  --box-color: #e4ebea;
+  --white-color: #ffffff;
+  --black-color: #222222;
+  --gray-color: #797979;
+  --red-color: #EF262C;
+  --green-color: #19CC40;
+}
+* {
+  scroll-behavior: smooth
+}
+body {
+  @apply bg-bodyColor min-h-screen font-cairo;
+}
+
+i {
+  user-select: none;
+}
+input:focus, textarea:focus {
+  outline: none;
+}
+
+.container {
+  @apply mx-auto max-sm:w-full max-sm:px-2 sm:w-[620px] md:w-[750px] lg:w-[1000px] xl:w-[1200px];
+}
+
+/* * Header Comp. */
+.navbar-item {
+  @apply relative flex items-center px-2 text-gray-500 hover:text-gray-950 transition-all max-md:border-b;
+}
+
+.navbar-item[data-isactive=true] {
+  @apply text-gray-950 font-medium max-md:text-secondColor;
+}
+.navbar-item[data-isactive=true] i {
+  @apply text-[--second-color]
+}
+
+.navbar-item::before {
+  content: '';
+  @apply absolute bottom-0 h-1 left-0 w-0 bg-secondColor transition-all duration-300
+}
+
+.navbar-item[data-isactive=true]::before {
+  @apply md:w-full
+}
+
+/* * Login & Register */
+.form-input {
+  @apply bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-1 focus:ring-secondColor focus:outline-none block w-full p-2.5
+}
+
+.custom-button {
+  @apply py-1 px-3 transition-all rounded text-white
+}
+
+
+/* Scroll Bar */
+*::-webkit-scrollbar {
+  @apply w-[7px] h-[7px]
+}
+
+*::-webkit-scrollbar-track {}
+
+*::-webkit-scrollbar-thumb {
+  @apply bg-secondColor
+}
+
+/* react multi range slider */
+.multi-range-slider {
+  border-radius: 0;
+  border: none;
+  box-shadow: none;
+}
+
+.multi-range-slider .bar-inner {
+  background-color: var(--second-color);
+}
+
+.multi-range-slider .bar-right,
+.multi-range-slider .bar-left {
+  background-color: var(--body-color);
+  border: 1px solid;
+  border-radius: 20px;
+}
+.multi-range-slider *,
+.multi-range-slider ::before{
+  box-shadow: none !important;
+}
+.multi-range-slider .thumb::before{
+  width: 15px;
+  height: 15px;
+  margin: -3px -8px;
+}
+
+.multi-range-slider .label,
+.multi-range-slider .ruler,
+.multi-range-slider .max-caption,
+.multi-range-slider .min-caption {
+  display: none;
+}
