@@ -38,11 +38,11 @@ input:focus, textarea:focus {
 
 /* * Header Comp. */
 .navbar-item {
-  @apply relative flex items-center px-2 text-gray-500 hover:text-gray-950 transition-all max-md:border-b;
+  @apply relative flex items-center px-2 text-gray-500 hover:text-gray-950 transition-all max-lg:border-b;
 }
 
 .navbar-item[data-isactive=true] {
-  @apply text-gray-950 font-medium max-md:text-secondColor;
+  @apply text-gray-950 font-medium max-lg:text-secondColor;
 }
 .navbar-item[data-isactive=true] i {
   @apply text-[--second-color]
@@ -54,7 +54,7 @@ input:focus, textarea:focus {
 }
 
 .navbar-item[data-isactive=true]::before {
-  @apply md:w-full
+  @apply lg:w-full
 }
 
 /* * Login & Register */

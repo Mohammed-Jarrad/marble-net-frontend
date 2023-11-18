@@ -20,6 +20,8 @@ import Product from './pages/product'
 import Products from './pages/products'
 import Profile from './pages/profile'
 import Register from './pages/register'
+import About from './pages/About'
+import OurClients from './pages/OurClients'
 
 const App = () => {
 	const { currentUser } = useUserContext()
@@ -32,6 +34,8 @@ const App = () => {
 				<ScrollWhenRefresh>
 					<Routes>
 						<Route path="/" element={<Home />} />
+						<Route path="/about" element={<About />} />
+						<Route path="/our-clients" element={<OurClients />} />
 						<Route path="/login" element={currentUser ? <Navigate to={'/'} /> : <Login />} />
 						<Route path="/register" element={currentUser ? <Navigate to={'/'} /> : <Register />} />
 						<Route path="/profile/:id" element={currentUser ? <Profile /> : <Login />} />

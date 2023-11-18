@@ -34,7 +34,7 @@ const DesktopNavbar = () => {
 	const { currentUser } = useUserContext()
 	const { cart, getUserCart } = useCartContext()
 	return (
-		<div className="container h-full flex items-stretch justify-between max-md:hidden">
+		<div className="container h-full flex items-stretch justify-between max-lg:hidden">
 			<ul className="flex items-stretch gap-3 text-sm justify-start">
 				{!currentUser ? (
 					<>
@@ -69,6 +69,8 @@ const DesktopNavbar = () => {
 						) : null}
 					</>
 				)}
+				<NavItem icon={'info'} title={'من نحن'} to={'/about'} />
+				<NavItem icon={'diversity_3'} title={'عملاؤنا'} to={'/our-clients'} />
 			</ul>
 
 			{/* Logo */}
@@ -86,7 +88,7 @@ const MobileNavbar = () => {
 	const { cart } = useCartContext()
 	const [show, setShow] = useState(false)
 	return (
-		<div className="container h-full flex items-stretch justify-between md:hidden">
+		<div className="container h-full flex items-stretch justify-between lg:hidden">
 			{/* overlay */}
 			<div
 				className={`fixed inset-0 top-[50px] bg-black/40 z-[999] transition-all ${
@@ -164,6 +166,8 @@ const MobileNavbar = () => {
 						) : null}
 					</>
 				)}
+				<NavItem icon={'info'} title={'من نحن'} to={'/about'} setShow={setShow}/>
+				<NavItem icon={'diversity_3'} title={'عملاؤنا'} to={'/our-clients'} setShow={setShow}/>
 			</ul>
 
 			{/* Logo */}
@@ -179,10 +183,10 @@ const MobileNavbar = () => {
 const NavItem = ({ to, icon, title, children, setShow }) => {
 	const { pathname: path } = useLocation()
 	return (
-		<li className="navbar-item max-md:p-4" data-isactive={path == to}>
+		<li className="navbar-item max-lg:p-4" data-isactive={path == to}>
 			<Link
 				to={to}
-				className="flex items-center gap-2 max-md:w-fit max-md:mx-auto max-md:justify-center"
+				className="flex items-center gap-2 max-lg:w-fit max-lg:mx-auto max-lg:justify-center"
 				onClick={() => {
 					if (setShow) setShow(false)
 				}}

@@ -83,8 +83,8 @@ const AdminUpdateProduct = () => {
 							{loading.updateProductImage ? <LoadingSpinner /> : 'تعديل الصورة'}
 						</button>
 						<Rating rating={currentProduct?.averageRating} />
-                        <p className="text-gray-500 mt-2">({currentProduct?.ratings?.length}) تقييمات</p>
-                        <p className="text-gray-500 mt-2">({currentProduct?.comments?.length}) تعليقات</p>
+						<p className="text-gray-500 mt-2">({currentProduct?.ratings?.length}) تقييمات</p>
+						<p className="text-gray-500 mt-2">({currentProduct?.comments?.length}) تعليقات</p>
 					</form>
 
 					{/* update product details form. */}
@@ -137,7 +137,7 @@ const AdminUpdateProduct = () => {
 
 export default AdminUpdateProduct
 
-export const InputBox = ({ id, title, type, placeholder, value, onChange, textarea }) => {
+export const InputBox = ({ id, title, type, placeholder, value, onChange, textarea, required }) => {
 	return (
 		<div className="flex flex-col items-start gap-2">
 			<label htmlFor={id} className="font-medium">
@@ -151,6 +151,7 @@ export const InputBox = ({ id, title, type, placeholder, value, onChange, textar
 					onChange={onChange}
 					className="form-input md:max-w-lg resize-none"
 					rows={7}
+					required={required || false}
 				/>
 			) : (
 				<input
@@ -159,6 +160,7 @@ export const InputBox = ({ id, title, type, placeholder, value, onChange, textar
 					value={value}
 					onChange={onChange}
 					className="form-input md:max-w-lg"
+					required={required || false}
 				/>
 			)}
 		</div>

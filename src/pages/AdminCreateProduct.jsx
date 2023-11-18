@@ -72,6 +72,7 @@ const AdminCreateProduct = () => {
 							title={'الاسم'}
 							type={'text'}
 							value={name}
+							required={true}
 						/>
 						<InputBox
 							id="source"
@@ -80,15 +81,26 @@ const AdminCreateProduct = () => {
 							title={'المصدر'}
 							type={'text'}
 							value={source}
+							required={true}
 						/>
-						<InputBox
-							id="category"
-							onChange={e => setCategory(e.target.value)}
-							placeholder="أضف الفئة الجديدة..."
-							title={'الفئة'}
-							type={'text'}
-							value={category}
-						/>
+						<div className="flex flex-col items-start gap-2">
+							<label htmlFor={'category'} className="font-medium">
+								الفئة
+							</label>
+							<select
+								id="category"
+								required
+								value={category}
+								onChange={e => setCategory(e.target.value)}
+								className="w-full form-input"
+							>
+								<option value="" disabled>
+									اختار الفئة
+								</option>
+								<option value="طبيعي">طبيعي</option>
+								<option value="صناعي">صناعي</option>
+							</select>
+						</div>
 						<InputBox
 							id="description"
 							onChange={e => setDescription(e.target.value)}
@@ -97,6 +109,7 @@ const AdminCreateProduct = () => {
 							type={'text'}
 							value={description}
 							textarea={true}
+							required={true}
 						/>
 						<button type="submit" className="custom-button bg-cyan-500 hover:bg-cyan-600">
 							{loading.createProduct ? <LoadingSpinner /> : 'إنشاء المنتج'}
