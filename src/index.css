@@ -77,37 +77,3 @@ input:focus, textarea:focus {
 *::-webkit-scrollbar-thumb {
   @apply bg-secondColor
 }
-
-/* react multi range slider */
-.multi-range-slider {
-  border-radius: 0;
-  border: none;
-  box-shadow: none;
-}
-
-.multi-range-slider .bar-inner {
-  background-color: var(--second-color);
-}
-
-.multi-range-slider .bar-right,
-.multi-range-slider .bar-left {
-  background-color: var(--body-color);
-  border: 1px solid;
-  border-radius: 20px;
-}
-.multi-range-slider *,
-.multi-range-slider ::before{
-  box-shadow: none !important;
-}
-.multi-range-slider .thumb::before{
-  width: 15px;
-  height: 15px;
-  margin: -3px -8px;
-}
-
-.multi-range-slider .label,
-.multi-range-slider .ruler,
-.multi-range-slider .max-caption,
-.multi-range-slider .min-caption {
-  display: none;
-}

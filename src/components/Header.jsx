@@ -1,21 +1,21 @@
 /* eslint-disable */
-import { useEffect, useState } from 'react'
-import { Link, useLocation } from 'react-router-dom'
-import { useCartContext } from '../context/CartProvider'
-import { useLoadingContext } from '../context/LoadingProvider'
-import { useUserContext } from '../context/UserProvider'
-import ProfileButton from './ProfileButton'
+import { useEffect, useState } from 'react';
+import { Link, useLocation } from 'react-router-dom';
+import { useCartContext } from '../context/CartProvider';
+import { useLoadingContext } from '../context/LoadingProvider';
+import { useUserContext } from '../context/UserProvider';
+import ProfileButton from './ProfileButton';
 
 const Header = () => {
-	const { currentUser } = useUserContext()
-	const { getUserCart } = useCartContext()
-	const { withLoading } = useLoadingContext()
+	const { currentUser } = useUserContext();
+	const { getUserCart } = useCartContext();
+	const { withLoading } = useLoadingContext();
 
 	useEffect(() => {
 		if (currentUser) {
-			withLoading(() => getUserCart(), 'getUserCart')
+			withLoading(() => getUserCart(), 'getUserCart');
 		}
-	}, [])
+	}, []);
 
 	return (
 		<header
@@ -25,14 +25,14 @@ const Header = () => {
 			<DesktopNavbar />
 			<MobileNavbar />
 		</header>
-	)
-}
+	);
+};
 
-export default Header
+export default Header;
 
 const DesktopNavbar = () => {
-	const { currentUser } = useUserContext()
-	const { cart, getUserCart } = useCartContext()
+	const { currentUser } = useUserContext();
+	const { cart, getUserCart } = useCartContext();
 	return (
 		<div className="container h-full flex items-stretch justify-between max-lg:hidden">
 			<ul className="flex items-stretch gap-3 text-sm justify-start">
@@ -42,6 +42,8 @@ const DesktopNavbar = () => {
 						<NavItem icon={'person_add'} title={'إنشاء حساب'} to={`/register`} />
 						<NavItem icon={'login'} title={'تسجيل الدخول'} to={`/login`} />
 						<NavItem icon={'category'} to={`/products`} title={'المنتجات'} />
+						<NavItem icon={'info'} title={'من نحن'} to={'/about'} />
+						<NavItem icon={'diversity_3'} title={'عملاؤنا'} to={'/our-clients'} />
 					</>
 				) : (
 					<>
@@ -51,6 +53,8 @@ const DesktopNavbar = () => {
 								{/* Customer Links */}
 								<NavItem icon={'home'} to={`/`} title={'الرئيسية'} />
 								<NavItem icon={'category'} to={`/products`} title={'المنتجات'} />
+								<NavItem icon={'info'} title={'من نحن'} to={'/about'} />
+								<NavItem icon={'diversity_3'} title={'عملاؤنا'} to={'/our-clients'} />
 								<NavItem icon={'local_mall'} title={'السلة'} to={`/cart`}>
 									<span className="w-5 h-5 rounded-full bg-red-500 text-white flex items-center justify-center">
 										{cart?.items?.length}
@@ -65,28 +69,25 @@ const DesktopNavbar = () => {
 								<NavItem icon={'add'} title={'إنشاء منتج'} to={`/dashboard/create-product`} />
 								<NavItem icon={'reorder'} title={'كل الطلبات'} to={`/dashboard/all-orders`} />
 								<NavItem icon={'people'} title={'المستخدمين'} to={`/dashboard/users`} />
+								<NavItem icon={'diversity_3'} title={'العملاء'} to={'/dashboard/our-clients'} />
 							</>
 						) : null}
 					</>
 				)}
-				<NavItem icon={'info'} title={'من نحن'} to={'/about'} />
-				<NavItem icon={'diversity_3'} title={'عملاؤنا'} to={'/our-clients'} />
 			</ul>
 
 			{/* Logo */}
-			<h1 className="font-bold flex items-center text-2xl">
-				<Link to={'/'} className="text-secondColor">
-					MarbleNet
-				</Link>
-			</h1>
+			<Link to={'/'} className="p-1">
+				<img src="/images/logo.svg" alt="logo" className="  h-full max-h-full object-contain" />
+			</Link>
 		</div>
-	)
-}
+	);
+};
 
 const MobileNavbar = () => {
-	const { currentUser } = useUserContext()
-	const { cart } = useCartContext()
-	const [show, setShow] = useState(false)
+	const { currentUser } = useUserContext();
+	const { cart } = useCartContext();
+	const [show, setShow] = useState(false);
 	return (
 		<div className="container h-full flex items-stretch justify-between lg:hidden">
 			{/* overlay */}
@@ -166,29 +167,27 @@ const MobileNavbar = () => {
 						) : null}
 					</>
 				)}
-				<NavItem icon={'info'} title={'من نحن'} to={'/about'} setShow={setShow}/>
-				<NavItem icon={'diversity_3'} title={'عملاؤنا'} to={'/our-clients'} setShow={setShow}/>
+				<NavItem icon={'info'} title={'من نحن'} to={'/about'} setShow={setShow} />
+				<NavItem icon={'diversity_3'} title={'عملاؤنا'} to={'/our-clients'} setShow={setShow} />
 			</ul>
 
 			{/* Logo */}
-			<h1 className="font-bold flex items-center text-2xl">
-				<Link to={'/'} className="text-secondColor">
-					MarbleNet
-				</Link>
-			</h1>
+			<Link to={'/'} className="p-1">
+				<img src="/images/logo.svg" alt="logo" className="  h-full max-h-full object-contain" />
+			</Link>
 		</div>
-	)
-}
+	);
+};
 
 const NavItem = ({ to, icon, title, children, setShow }) => {
-	const { pathname: path } = useLocation()
+	const { pathname: path } = useLocation();
 	return (
 		<li className="navbar-item max-lg:p-4" data-isactive={path == to}>
 			<Link
 				to={to}
 				className="flex items-center gap-2 max-lg:w-fit max-lg:mx-auto max-lg:justify-center"
 				onClick={() => {
-					if (setShow) setShow(false)
+					if (setShow) setShow(false);
 				}}
 			>
 				<i className="material-icons-round text-lg">{icon}</i>
@@ -196,5 +195,5 @@ const NavItem = ({ to, icon, title, children, setShow }) => {
 				{children}
 			</Link>
 		</li>
-	)
-}
+	);
+};

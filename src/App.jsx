@@ -6,11 +6,14 @@ import ProductComments from './components/ProductComments'
 import ProductRatings from './components/ProductRatings'
 import ScrollWhenRefresh from './components/ScrollWhenRefresh'
 import { useUserContext } from './context/UserProvider'
+import About from './pages/About'
+import AdminClients from "./pages/AdminClients"
 import AdminCreateProduct from './pages/AdminCreateProduct'
 import AdminOrders from './pages/AdminOrders'
 import AdminProducts from './pages/AdminProducts'
 import AdminUpdateProduct from './pages/AdminUpdateProduct'
 import AdminUsers from './pages/AdminUsers'
+import OurClients from './pages/OurClients'
 import Cart from './pages/cart'
 import Home from './pages/home'
 import Login from './pages/login'
@@ -20,8 +23,6 @@ import Product from './pages/product'
 import Products from './pages/products'
 import Profile from './pages/profile'
 import Register from './pages/register'
-import About from './pages/About'
-import OurClients from './pages/OurClients'
 
 const App = () => {
 	const { currentUser } = useUserContext()
@@ -30,7 +31,7 @@ const App = () => {
 		<>
 			<Header />
 
-			<main style={{ minHeight: 'calc(100vh - 50px)' }} className="mt-[50px] p-[1px]">
+			<main style={{ minHeight: 'calc(100vh - 50px)' }} className="mt-[50px] overflow-hidden">
 				<ScrollWhenRefresh>
 					<Routes>
 						<Route path="/" element={<Home />} />
@@ -60,6 +61,7 @@ const App = () => {
 							<Route path="create-product" element={currentUser ? <AdminCreateProduct /> : <Login />} />
 							<Route path="all-orders" element={currentUser ? <AdminOrders /> : <Login />} />
 							<Route path="users" element={currentUser ? <AdminUsers /> : <Login />} />
+							<Route path="our-clients" element={currentUser ? <AdminClients /> : <Login />} />
 						</Route>
 					</Routes>
 				</ScrollWhenRefresh>

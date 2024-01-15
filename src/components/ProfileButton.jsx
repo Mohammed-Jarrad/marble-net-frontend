@@ -2,10 +2,12 @@ import { motion } from 'framer-motion'
 import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { useUserContext } from '../context/UserProvider'
+import useClickOutside from "../hooks/useClickOutside"
 
 const ProfileButton = () => {
 	const { currentUser, setCurrentUser } = useUserContext()
 	const [showMenu, setShowMenu] = useState(false)
+	const { ref } = useClickOutside(() => setShowMenu(false))
 	const toggleShow = () => setShowMenu(p => !p)
 	const navigate = useNavigate()
 	const logout = () => {
@@ -17,6 +19,7 @@ const ProfileButton = () => {
 		<li
 			onClick={toggleShow}
 			className="group flex relative gap-1 cursor-pointer items-center justify-center ml-4"
+			ref={ref}
 		>
 			<i
 				className={`material-icons-round text-gray-500 group-hover:text-secondColor text-[28px] transition-all ${

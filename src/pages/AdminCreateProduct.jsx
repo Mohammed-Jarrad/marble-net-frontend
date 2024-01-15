@@ -99,6 +99,7 @@ const AdminCreateProduct = () => {
 								</option>
 								<option value="طبيعي">طبيعي</option>
 								<option value="صناعي">صناعي</option>
+								<option value="بورسلان">بورسلان</option>
 							</select>
 						</div>
 						<InputBox

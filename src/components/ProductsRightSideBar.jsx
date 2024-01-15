@@ -15,7 +15,7 @@ const ProductsRightSideBar = () => {
 	const _products = [...products].slice(firstIndex, lastIndex)
 
 	return (
-		<div className="right-side-bar flex-1 flex flex-col gap-5">
+		<div className="right-side-bar flex-1 flex flex-col gap-5 overflow-hidden">
 			{/* search section */}
 			<SearchForm />
 			{products.length ? (
@@ -64,7 +64,7 @@ const SearchForm = () => {
 				e.preventDefault()
 				handleSearch(searchText)
 			}}
-			className="sticky top-[50px] p-4 z-[999] bg-white shadow bg-opacity-70 backdrop-blur-md"
+			className="sticky top-[0px] p-4 z-[999] bg-white shadow bg-opacity-70 backdrop-blur-md"
 		>
 			<div className="flex items-stretch gap-3 max-lg:gap-1">
 				<div className="flex-1 relative">

@@ -24,7 +24,7 @@ const Login = () => {
 				localStorage.setItem('currentUser', JSON.stringify(data))
 				setCurrentUser(data)
 			} catch (error) {
-				toast.error(error.response.data.message)
+				toast.error(error?.response?.data?.message || error?.message)
 			}
 		}, 'login')
 	}
